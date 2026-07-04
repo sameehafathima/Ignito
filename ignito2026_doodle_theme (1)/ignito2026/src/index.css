@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #f7f3e8;
+  --abyss: #efe8d5;
+  --nebula: #e6ddc4;
+  --ion: #1a1a1a;
+  --cyan: #111111;
+  --plasma: #2e2e2e;
+  --ink: #121212;
+  --paper: #f7f3e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--void);
+  overflow-x: hidden;
+  color: var(--ink);
+}
+
+body {
+  cursor: none;
+}
+
+@media (max-width: 768px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: 8px;
+  border: 2px solid var(--void);
+}
+
+/* Glass — reimagined as a flat, hand-inked paper card with a hard offset
+   shadow instead of a blurred dark panel. */
+.glass {
+  background: rgba(255, 252, 244, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(17, 17, 17, 0.5);
+}
+
+.glass-strong {
+  background: rgba(250, 247, 238, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(17, 17, 17, 0.65);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #111111, #3a3a3a 55%, #111111);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-label {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.btn-glow {
+  position: relative;
+  isolation: isolate;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--ink);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.35s ease;
+}
+.btn-glow:hover::before {
+  opacity: 0.18;
+}
+
+/* Focus visibility for a11y */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Sketchy hand-drawn border for cards/panels that want the doodle look */
+.doodle-border {
+  border: 2px solid var(--ink);
+  border-radius: 1.1rem 1.4rem 1rem 1.3rem / 1.3rem 1rem 1.4rem 1rem;
+}
+
+/* Cinematic film-grain / paper texture, sits above the star field, below content */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

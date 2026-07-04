@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #050816;
+  --abyss: #0b1026;
+  --nebula: #12192d;
+  --ion: #6c63ff;
+  --cyan: #00e5ff;
+  --plasma: #9d4edd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--void);
+  overflow-x: hidden;
+}
+
+body {
+  cursor: none;
+}
+
+@media (max-width: 768px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: var(--ion);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ion), var(--plasma));
+  border-radius: 8px;
+  border: 2px solid var(--void);
+}
+
+/* Glass */
+.glass {
+  background: rgba(18, 25, 45, 0.45);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(11, 16, 38, 0.72);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #00e5ff, #6c63ff 55%, #9d4edd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-label {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.btn-glow {
+  position: relative;
+  isolation: isolate;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--ion), var(--plasma));
+  opacity: 0;
+  filter: blur(14px);
+  transition: opacity 0.35s ease;
+}
+.btn-glow:hover::before {
+  opacity: 0.85;
+}
+
+/* Focus visibility for a11y */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--cyan);
+  color: #000;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
